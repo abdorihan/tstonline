@@ -20,6 +20,6 @@ const app = express()
 app.use('/test', test);
 
 const server = http.createServer(app);
-server.listen(PORT);
+server.listen(8080);
 
-console.log(`Server started at http://localhost:${PORT}`);
+console.log(`Server started at`);
