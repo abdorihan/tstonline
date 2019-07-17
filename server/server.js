@@ -8,8 +8,6 @@ import cookieParser from 'cookie-parser';
 // routes
 import test from './router/test';
 
-const PORT = 8080;
-
 const app = express()
     .use(compression())
     .use(cookieParser())
