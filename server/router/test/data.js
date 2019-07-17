@@ -1,5 +1,5 @@
 export async function getData () {
-    const result = { ok: false};
+    const result = { ok: true};
     return Promise.resolve(result);
 }
 
