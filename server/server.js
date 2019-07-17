@@ -15,9 +15,9 @@ const app = express()
     .use(bodyParser.json());
 
 // REST API
-app.use('/test', test);
+app.use('/', test);
 
 const server = http.createServer(app);
-server.listen(8080);
+server.listen(80);
 
 console.log(`Server started at`);
