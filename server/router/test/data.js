@@ -11,10 +11,9 @@ export async function getData () {
     const result = { ok: true};
     await client.connect();
 
-    const res = await client.query('SELECT $1::text as message', ['Hello world!'])
-    console.log(res.rows[0].message); // Hello world!
+    const res = await client.query('SELECT $1::text as message', ['Hello world!']).rows[0].message;
     await client.end();
-    return Promise.resolve(res.rows[0].message);
+    return Promise.resolve(res);
 }
 
 export default { getData};
