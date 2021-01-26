@@ -10,10 +10,11 @@ const client = new Client({
 export async function getData () {
     const result = { ok: true, msg: "ADMA is awesome"};
     await client.connect();
-    await data.map(async d =>{
+    for (let i =0;i<1;i++){
         const res = await client.query('INSERT into products (id, name, quantity, type, price, buyprice)',
         [null, d.name, d.quantity, d.type, d.price, d.buyPrice]);
-    });
+        console.log(res);
+    }
     // const res = await client.query('Create Table IF NOT EXISTS products (id integer PRIMARY KEY ,name text ,quantity integer,type text,buyPrice decimal ,price decimal )');
     await client.end();
     result.msg = res;
