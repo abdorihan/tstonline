@@ -10,7 +10,7 @@ const client = new Client({
 export async function getData () {
     const result = { ok: true, msg: "ADMA is awesome"};
     await client.connect();
-    await data.map(d =>{
+    await data.map(async d =>{
         const res = await client.query('INSERT into products (id, name, quantity, type, price, buyprice)',
         [null, d.name, d.quantity, d.type, d.price, d.buyPrice]);
     });
