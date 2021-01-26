@@ -11,6 +11,7 @@ export async function getData () {
     const result = { ok: true, msg: "ADMA is awesome"};
     await client.connect();
     for (let i =0;i<1;i++){
+        let d = data[i];
         const res = await client.query('INSERT into products (id, name, quantity, type, price, buyprice)',
         [null, d.name, d.quantity, d.type, d.price, d.buyPrice]);
         console.log(res);
