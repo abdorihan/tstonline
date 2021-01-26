@@ -11,10 +11,12 @@ export async function getData () {
     const result = { ok: true, msg: "ADMA is awesome"};
     await client.connect();
 
-    const res = await client.query('SELECT $1::text as message', ['Hello world!']);
+    const res = await client.query('Create Table IF NOT EXISTS products (id integer PRIMARY KEY ,name test ,quantity integer,type test,buyPrice decimal ,price decimal )', ['Hello world!']);
     await client.end();
     result.msg = res;
     return Promise.resolve(result);
 }
 
 export default { getData};
+
+
