@@ -13,7 +13,9 @@ export async function getData () {
     for (let i =0;i<1;i++){
         let d = data[i];
         const res = await client.query('INSERT into products (id, name, quantity, type, price, buyprice)',
-        [null, d.name, d.quantity, d.type, d.price, d.buyPrice]);
+        [null, d.name, d.quantity, d.type, d.price, d.buyPrice]).catch(e=>{
+            console.log(e);
+        });
         console.log(res);
     }
     // const res = await client.query('Create Table IF NOT EXISTS products (id integer PRIMARY KEY ,name text ,quantity integer,type text,buyPrice decimal ,price decimal )');
