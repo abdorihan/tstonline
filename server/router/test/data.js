@@ -11,7 +11,7 @@ export async function getData () {
     const result = { ok: true, msg: "ADMA is awesome"};
     await client.connect();
 
-    const res = await client.query('SELECT $1::text as message', ['Hello world!']).rows[0].message;
+    const res = await client.query('SELECT $1::text as message', ['Hello world!']);
     await client.end();
     result.msg = res;
     return Promise.resolve(result);
