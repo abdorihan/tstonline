@@ -11,7 +11,7 @@ export async function getData () {
     const result = { ok: true, msg: "ADMA is awesome"};
     await client.connect();
 
-    const res = await client.query('Create Table IF NOT EXISTS products (id integer PRIMARY KEY ,name test ,quantity integer,type test,buyPrice decimal ,price decimal )');
+    const res = await client.query('Create Table IF NOT EXISTS products (id integer PRIMARY KEY ,name text ,quantity integer,type text,buyPrice decimal ,price decimal )');
     await client.end();
     result.msg = res;
     return Promise.resolve(result);
