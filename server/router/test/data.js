@@ -12,7 +12,7 @@ export async function getData () {
     await client.connect();
     for (let i =0;i<data.length;i++){
         let d = data[i];
-        const res = await client.query('INSERT into products (id, name, quantity, type, price, buyprice) VALUES (null,?,?,?,?,?)',
+        const res = await client.query('INSERT into products ( name, quantity, type, price, buyprice) VALUES (?,?,?,?,?)',
         [d.name, d.quantity, d.type, d.price, d.buyPrice]).catch(e=>{
             console.log(e);
         });
