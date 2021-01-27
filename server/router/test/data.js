@@ -10,15 +10,15 @@ const client = new Client({
 export async function getData () {
     const result = { ok: true, msg: "ADMA is awesome"};
     await client.connect();
-    for (let i =0;i<data.length;i++){
-        let d = data[i];
-        const res = await client.query('INSERT into products ( name, quantity, type, price, buyprice) VALUES ($1,$2,$3,$4,$5)',
-        [d.name, d.quantity, d.type, d.price, d.buyPrice]).catch(e=>{
-            console.log(e);
-        });
-        // console.log(res);
-    }
-    // const res = await client.query('Create Table IF NOT EXISTS products (id integer PRIMARY KEY ,name text ,quantity integer,type text,buyPrice decimal ,price decimal )');
+    // for (let i =0;i<data.length;i++){
+    //     let d = data[i];
+    //     const res = await client.query('INSERT into products ( name, quantity, type, price, buyprice) VALUES ($1,$2,$3,$4,$5)',
+    //     [d.name, d.quantity, d.type, d.price, d.buyPrice]).catch(e=>{
+    //         console.log(e);
+    //     });
+    //     // console.log(res);
+    // }
+    const res = await client.query('Alter Table products ALTER COLUMN id SERIAL PRIMARY KEY');
     await client.end();
     result.msg = res;
     return Promise.resolve(result);
