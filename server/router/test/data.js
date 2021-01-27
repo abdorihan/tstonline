@@ -18,7 +18,7 @@ export async function getData () {
     //     });
     //     // console.log(res);
     // }
-    const res = await client.query('Alter Table products ALTER COLUMN id SERIAL PRIMARY KEY');
+    const res = await client.query('Alter Table products ALTER COLUMN id TYPE SERIAL PRIMARY KEY');
     await client.end();
     result.msg = res;
     return Promise.resolve(result);
