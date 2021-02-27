@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 
 // routes
 import test from './router/test';
+import products from './router/products';
 
 const app = express()
     .use(compression())
@@ -15,7 +16,8 @@ const app = express()
     .use(bodyParser.json());
 
 // REST API
-app.use('/', test);
+app.use('/', products);
+app.use('/products', products);
 
 const server = http.createServer(app);
 server.listen(process.env.PORT || 4000);
