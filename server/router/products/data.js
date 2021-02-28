@@ -17,39 +17,25 @@ const specs = {
 
 
 export async function getData () {
-  const specs = {
-    user: 'zfnsqxyxdyuinh',
-    host: 'ec2-54-78-127-245.eu-west-1.compute.amazonaws.com',
-    database: 'd8ccpl1b2tjrpn',
-    password: 'ed8bd878cdf38e747b8eca3209095b0888ff0b7243806185fb8cc1f311cc97b2',
-    port: 5432,
-    ssl: { rejectUnauthorized: false }
   };
     const result = { ok: true};
-    console.log('before db');
     let client = await new Client(specs);
-    console.log('aa');
     await client.connect();
-    console.log('after db connect');
     const res = await client.query('select * from products;');
     result.data = res.rows;
-    console.log('after db ');
     await client.end();
     return Promise.resolve(result);
 }
 
 export async function sellElement (element){
-  console.log('before db ');
     const result = { ok: true};
     let client = await new Client(specs);
     await client.connect();
-    console.log('after db connect');
     const res = await client.query('INSERT INTO sell (p_id, s_quantity, s_price, s_des, s_date) VALUES ($1,$2,$3,$4,NOW());',
     [element.id, element.quantity, element.price, element.des]);
     result.data = res;
-    console.log('after db ');
     await client.end();
-
+    return Promise.resolve(result);
 }
 export default { getData};
 
