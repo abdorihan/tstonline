@@ -17,9 +17,8 @@ const specs = {
 
 
 export async function getData () {
-  };
-    const result = { ok: true};
-    let client = new Client(specs);
+  const result = { ok: true};
+    let client = await new Client(specs);
     await client.connect();
     const res = await client.query('select * from products;');
     result.data = res.rows;
@@ -29,7 +28,7 @@ export async function getData () {
 
 export async function sellElement (element){
     const result = { ok: true};
-    let client = new Client(specs);
+    let client = await new Client(specs);
     await client.connect();
     const res = await client.query('INSERT INTO sell (p_id, s_quantity, s_price, s_des, s_date) VALUES ($1,$2,$3,$4,NOW());',
     [element.id, element.quantity, element.price, element.des]);
