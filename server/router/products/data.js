@@ -27,7 +27,7 @@ export async function getData () {
   };
     const result = { ok: true};
     console.log('before db');
-    let client = new Client(specs);
+    let client = await new Client(specs);
     console.log('aa');
     await client.connect();
     console.log('after db connect');
