@@ -42,7 +42,7 @@ export async function sells (date){
   const result = { ok: true};
   let client = await new Client(specs);
   await client.connect();
-  const res = await client.query('SELECT * from sell;');
+  const res = await client.query('SELECT name, s_quantity, buyprice, s_price from sell s join products p ON p.id = s.p_id;');
   result.data = res.rows;
   client.end();
   return Promise.resolve(result);
