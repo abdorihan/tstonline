@@ -22,20 +22,32 @@ export async function getData () {
     await client.connect();
     const res = await client.query('select * from products;');
     result.data = res.rows;
-    await client.end();
+    client.end();
     return Promise.resolve(result);
 }
 
 export async function sellElement (element){
-    const result = { ok: true};
-    let client = await new Client(specs);
-    await client.connect();
-    const res = await client.query('INSERT INTO sell (p_id, s_quantity, s_price, s_des, s_date) VALUES ($1,$2,$3,$4,NOW());',
-    [element.id, element.quantity, element.price, element.des]);
-    result.data = res;
-    await client.end();
-    return Promise.resolve(result);
+  const result = { ok: true};
+  let client = await new Client(specs);
+  await client.connect();
+  const res = await client.query('INSERT INTO sell (p_id, s_quantity, s_price, s_des, s_date) VALUES ($1,$2,$3,$4,NOW());',
+  [element.id, element.quantity, element.price, element.des]);
+  result.data = res;
+  client.end();
+  return Promise.resolve(result);
 }
+
+export async function sells (date){
+  console.log(date);
+  const result = { ok: true};
+  let client = await new Client(specs);
+  await client.connect();
+  const res = await client.query('SELECT * from sell;');
+  result.data = res.rows;
+  client.end();
+  return Promise.resolve(result);
+}
+
 export default { getData};
 
 
