@@ -46,7 +46,7 @@ export async function sells (data){
   }
   let client = await new Client(specs);
   await client.connect();
-  const res = await client.query();
+  const res = await client.query(sql, [data.date.dateFrom, data.date.dateTo]);
   result.data = res.rows;
   client.end();
   return Promise.resolve(result);
