@@ -40,7 +40,7 @@ export async function sellElement (element){
 export async function sells (data){
   console.log(data);
   const result = { ok: true};
-  let sql = 'SELECT name, s_quantity, buyprice, s_price from sell s join products p ON p.id = s.p_id  WHERE s_date >= ? AND s_date <= ?;';
+  let sql = 'SELECT name, s_quantity, buyprice, s_price from sell s join products p ON p.id = s.p_id  WHERE s_date >= $1 AND s_date <= $2;';
   if (!data.type) {
     data.date.dateTo = data.date.dateFrom
   }
