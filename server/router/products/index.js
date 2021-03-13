@@ -15,7 +15,7 @@ router.post('/sell', (req, res) => {
         res.send(data);
     });
 });// get sells
-router.post('/sell', (req, res) => {
+router.post('/getsells', (req, res) => {
     sells(req.body).then(data => {
         res.send(data);
     });
