@@ -1,5 +1,5 @@
 import express from 'express';
-import { getData, sellElement, sells } from './data';
+import { getData, sellElement, sells, deleteElement } from './data';
 
 const router = express.Router();
 
@@ -14,7 +14,16 @@ router.post('/sell', (req, res) => {
     sellElement(req.body).then(data => {
         res.send(data);
     });
-});// get sells
+});
+
+// delete element
+router.delete('/sell', (req, res) => {
+    deleteElement(req.body).then(data => {
+        res.send(data);
+    });
+});
+
+// get sells
 router.post('/getsells', (req, res) => {
     sells(req.body).then(data => {
         res.send(data);

@@ -37,8 +37,18 @@ export async function sellElement (element){
   return Promise.resolve(result);
 }
 
+export async function deleteElement (element){
+  const result = { ok: true};
+  let client = await new Client(specs);
+  await client.connect();
+  const res = await client.query('DELETE FROM sell WHERE s_id = $1;',
+  [element.id]);
+  result.data = res;
+  client.end();
+  return Promise.resolve(result);
+}
+
 export async function sells (data){
-  console.log(data);
   const result = { ok: true};
   let sql = 'SELECT name, s_quantity, buyprice, s_price from sell s join products p ON p.id = s.p_id  WHERE s_date >= $1 AND s_date <= $2;';
   if (!data.type) {
