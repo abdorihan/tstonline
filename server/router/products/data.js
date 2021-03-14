@@ -50,7 +50,7 @@ export async function deleteElement (element){
 
 export async function sells (data){
   const result = { ok: true};
-  let sql = 'SELECT s_id name, s_quantity, buyprice, s_price from sell s join products p ON p.id = s.p_id  WHERE s_date >= $1 AND s_date <= $2;';
+  let sql = 'SELECT s_id, name, s_quantity, buyprice, s_price from sell s join products p ON p.id = s.p_id  WHERE s_date >= $1 AND s_date <= $2;';
   if (!data.type) {
     data.date.dateTo = data.date.dateFrom
   }
