@@ -13,7 +13,7 @@ const specs = {
   password: 'ed8bd878cdf38e747b8eca3209095b0888ff0b7243806185fb8cc1f311cc97b2',
   port: 5432,
   ssl: {
-    rejectUnauthorized: true,
+    rejectUnauthorized: false,
   }
 };
 
