@@ -23,7 +23,7 @@ export async function getData () {
   const result = { ok: true};
     let client = await new Client(specs);
     await client.connect();
-    const res = await client.query('select * from products;');
+    const res = await client.query('select *, (quantity - coalesce(sumquantity, 0)) available from (SELECT p_id,SUM(s_quantity) sumquantity from sell GROUP BY p_id) s RIGHT OUTER JOIN products ON id = p_id;');
     result.data = res.rows;
     client.end();
     return Promise.resolve(result);
